@@ -16,8 +16,7 @@ By putting the state in the top-level Game component instead, we have one place 
 The grid and lights just receive that data as props and tell Game when something was clicked. That makes it possible to store each version of the board in a history array and simply move backwards in that history when we hit undo. So lifting state up isn’t just a style choice here, it’s what makes the undo/time-travel feature possible and manageable.
 
 
-### 2. Explain the importance of immutability when you update the lights state array.
-What bug might occur if you mutated the array directly?
+### 2. Explain the importance of immutability when you update the lights state array. What bug might occur if you mutated the array directly?
 For this project, treating the lights array as immutable (not changing it directly) is really important.
 If we changed the existing array in place and then called setLights with the same array reference, React might not realize anything changed and might not re-render. That’s one problem.
 But the bigger issue shows up with history:
@@ -26,26 +25,29 @@ But the bigger issue shows up with history:
 -	That means when we change the current board, all the “past” boards silently change too.
 The result: undo basically stops working, because going back to an earlier step still shows the latest board state
 
-### 3. How did you structure your components? Discuss the flow of props and state in
-your application (e.g., what state lives where, and what props are passed).
+### 3. How did you structure your components? Discuss the flow of props and state in your application (e.g., what state lives where, and what props are passed).
 I structured the app into four  components:
-1.	Game
-o	It stores all the important state: the history, the current stepNumber, and from those it figures out currentLights, whether the player has won, and how many moves they’ve made.
-o	It also defines the event handlers: what happens when you click a light, press undo, or start a new game.
-2.	Grid
-o	This component is in charge of laying out the 5×5 board.
-o	It receives the lights array and a callback onLightClick from Game.
-o	It loops over the lights array and renders a Light for each cell, wiring the onClick handler so Game knows exactly which index was clicked.
-3.	Light
-o	This is a small, presentational component.
-o	It just gets two props: isLit and onClick.
-o	Based on isLit, it chooses the right CSS class (white for on, dark for off) and calls onClick when the user presses the button.
-4.	Goal
-o	This is a goal paragraph where it is only witten that Goal is Turn all the lights off. Clicking a light toggles it and its neighbours.
+#### 1.	Game
+-	It stores all the important state: the history, the current stepNumber, and from those it figures out currentLights, whether the player has won, and how many moves they’ve made.
+-	It also defines the event handlers: what happens when you click a light, press undo, or start a new game.
+#### 2.	Grid
+-	This component is in charge of laying out the 5×5 board.
+-	It receives the lights array and a callback onLightClick from Game.
+-	It loops over the lights array and renders a Light for each cell, wiring the onClick handler so Game knows exactly which index was clicked.
+#### 3.	Light
+-	This is a small, presentational component.
+-	It just gets two props: isLit and onClick.
+-	Based on isLit, it chooses the right CSS class (white for on, dark for off) and calls onClick when the user presses the button.
+#### 4.	Control
+-	Here, I added New Game button where I can reset or start new game.
+-	Also I added Undo button. Undo needs to know what the whole board looked like at each step. If each light stored its own state, I’d have no single place that tracks full board history. Keeping state in Game gives one source of truth and makes it easy to store past boards and step back.
+
+#### 4.	Goal
+-	This is a goal paragraph where it is only witten that Goal is Turn all the lights off. Clicking a light toggles it and its neighbours.
 
 So the data and control flow looks like this:
-•	State flows down from Game → Grid → Light as props.
-•	Events flow up from Light → Grid → Game via callback functions.
+-	State flows down from Game → Grid → Light as props.
+-	Events flow up from Light → Grid → Game via callback functions.
 
 ### 4. What was the most challenging part of implementing the click logic (toggling the light and its neighbors)? If you had more time, what feature would you add?
 the most challenging part was correctly toggling the clicked cell and its neighbours using index math, while keeping updates immutable. With more time, I’d add difficulty levels, animations, and maybe a move counter with best scores.
