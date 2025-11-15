@@ -1,4 +1,4 @@
-import React from "react";
+import "./Light.css";
 
 const Light = ({ isLit, onClick }) => {
   const className = "light" + (isLit ? " light--on" : " light--off");

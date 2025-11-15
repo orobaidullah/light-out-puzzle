@@ -1,4 +1,4 @@
-import React from "react";
+import "./Grid.css";
 import Light from "../Light/Light";
 
 const Grid = ({ lights, onLightClick }) => {
