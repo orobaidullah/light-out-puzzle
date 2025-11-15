@@ -81,7 +81,7 @@ function Game() {
 
   return (
     <div className="game">
-      <h1 className="game__title">Lights Out</h1>
+      <h1 className="game-title">Lights Out</h1>
       <div className="game__status">{status}</div>
       <Grid lights={currentLights} onLightClick={handleLightClick} />
       <Control
@@ -89,7 +89,7 @@ function Game() {
         handleUndo={handleUndo}
         stepNumber={stepNumber}
       />
-      <div className="game__meta">
+      <div className="game-meta">
         <p>
           Board size: {GRID_SIZE} × {GRID_SIZE}
         </p>
