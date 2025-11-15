@@ -26,7 +26,7 @@ But the bigger issue shows up with history:
 The result: undo basically stops working, because going back to an earlier step still shows the latest board state
 
 ### 3. How did you structure your components? Discuss the flow of props and state in your application (e.g., what state lives where, and what props are passed).
-I structured the app into four  components:
+I structured the app into five components:
 #### 1.	Game
 -	It stores all the important state: the history, the current stepNumber, and from those it figures out currentLights, whether the player has won, and how many moves they’ve made.
 -	It also defines the event handlers: what happens when you click a light, press undo, or start a new game.
