@@ -82,11 +82,8 @@ function Game() {
   return (
     <div className="game">
       <h1 className="game__title">Lights Out</h1>
-
       <div className="game__status">{status}</div>
-
       <Grid lights={currentLights} onLightClick={handleLightClick} />
-
       <Control
         handleReset={handleReset}
         handleUndo={handleUndo}

@@ -9,12 +9,12 @@
     background-color 0.15s ease-out;
 }
 
-.light--on {
-  background: #facc15;
-  box-shadow: 0 0 16px rgba(250, 204, 21, 0.9);
+.light-on {
+  background: #ffffff;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.9);
 }
 
-.light--off {
+.light-off {
   background: #020617;
   box-shadow: inset 0 0 8px rgba(15, 23, 42, 0.9);
 }
