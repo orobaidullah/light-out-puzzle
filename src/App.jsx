@@ -1,11 +1,13 @@
 import "./App.css";
 
 import Game from "./components/Game/Game";
+import Goal from "./components/Goal/Goal";
 
 const App = () => {
   return (
     <div className="App">
-      <Game></Game>
+      <Goal />
+      <Game />
     </div>
   );
 };

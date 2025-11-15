@@ -77,7 +77,7 @@ function Game() {
     setStepNumber(stepNumber - 1);
   }
 
-  const status = hasWon ? "You Win!" : `Moves: ${moves}`;
+  const status = hasWon ? "congrats! You Win🎉" : `Moves: ${moves}`;
 
   return (
     <div className="game">
