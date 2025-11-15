@@ -12,13 +12,12 @@
 .game-title {
   margin: 15px 0;
   font-size: 35px;
-  letter-spacing: 0.05em;
+  letter-spacing: 3px;
 }
 
 .game__status {
   margin: 15px 0;
   font-size: 20px;
-  letter-spacing: 0.05em;
 }
 
 .game-meta {
