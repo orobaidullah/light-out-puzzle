@@ -1,7 +1,14 @@
 import React from "react";
+import Light from "../Light/Light";
 
-const Grid = () => {
-  return <div></div>;
+const Grid = ({ lights, onLightClick }) => {
+  return (
+    <div className="grid">
+      {lights.map((isLit, index) => (
+        <Light key={index} isLit={isLit} onClick={() => onLightClick(index)} />
+      ))}
+    </div>
+  );
 };
 
 export default Grid;
